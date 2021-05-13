@@ -1,0 +1,26 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/godungeon/GodungeonTiles3D.gd" type="Script" id=1]
+[ext_resource path="res://procedural/procedural_terrain_tiles.tres" type="Resource" id=2]
+[ext_resource path="res://procedural/DungeonGenerator.gd" type="Script" id=3]
+[ext_resource path="res://tiles/terrain/dirt/dirt_template.tscn" type="PackedScene" id=4]
+[ext_resource path="res://tiles/terrain/wall/wall_template.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tiles/terrain/sand/sand_template.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tiles/terrain/water/water_template.tscn" type="PackedScene" id=7]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="DungeonGenerator" type="Node" parent="."]
+script = ExtResource( 3 )
+terrain_tiles = ExtResource( 2 )
+
+[node name="GodungeonTiles3D" type="Spatial" parent="."]
+script = ExtResource( 1 )
+dungeon_tiles = ExtResource( 2 )
+tile_size = 2
+tile_templates = {
+Resource( "res://tiles/terrain/water/water_tile.tres" ): ExtResource( 7 ),
+Resource( "res://tiles/terrain/sand/sand_tile.tres" ): ExtResource( 6 ),
+Resource( "res://tiles/terrain/dirt/dirt_tile.tres" ): ExtResource( 4 ),
+Resource( "res://tiles/terrain/wall/wall_tile.tres" ): ExtResource( 5 )
+}

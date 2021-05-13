@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://tiles/terrain/wall/wall_template.gd" type="Script" id=1]
+[ext_resource path="res://tiles/terrain/wall/wall.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://tiles/terrain/wall/outter_top.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://tiles/terrain/sand/sand_tile.tres" type="Resource" id=4]
+[ext_resource path="res://tiles/terrain/wall/outter_corner.mesh" type="ArrayMesh" id=5]
+
+[sub_resource type="BoxShape" id=1]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+sand_tile = ExtResource( 4 )
+
+[node name="wall" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="outter_top" type="MeshInstance" parent="."]
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="outter_corner" type="MeshInstance" parent="."]
+visible = false
+mesh = ExtResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
