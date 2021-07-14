@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://addons/godungeon/GodungeonTiles3D.gd" type="Script" id=1]
 [ext_resource path="res://tiles/terrain/wall/wall_template.tscn" type="PackedScene" id=2]
@@ -6,15 +6,16 @@
 [ext_resource path="res://imported/imported_terrain_tiles.tres" type="Resource" id=4]
 [ext_resource path="res://tiles/terrain/sand/sand_template.tscn" type="PackedScene" id=5]
 [ext_resource path="res://tiles/terrain/water/water_template.tscn" type="PackedScene" id=6]
-[ext_resource path="res://player/player.gd" type="Script" id=7]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tiles/terrain/bridge/bridge_template.tscn" type="PackedScene" id=8]
-[ext_resource path="res://imported/ui.gd" type="Script" id=9]
+[ext_resource path="res://ui/ui.tscn" type="PackedScene" id=9]
+[ext_resource path="res://tiles/terrain/sand/sand_material.tres" type="Material" id=10]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="SphereMesh" id=2]
-material = SubResource( 1 )
+[sub_resource type="SphereMesh" id=4]
+material = SubResource( 3 )
 flip_faces = true
 radius = 100.0
 height = 100.0
@@ -22,47 +23,22 @@ radial_segments = 10
 rings = 5
 is_hemisphere = true
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=5]
 background_mode = 1
 background_color = Color( 0.0392157, 0.0823529, 0.0941176, 1 )
 ambient_light_color = Color( 1, 1, 1, 1 )
-ambient_light_energy = 0.43
-fog_color = Color( 0.141176, 0.141176, 0.141176, 1 )
+ambient_light_energy = 0.19
+fog_enabled = true
+fog_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
 fog_sun_color = Color( 1, 1, 1, 1 )
-fog_depth_begin = 2.0
-fog_depth_end = 16.4
+fog_depth_begin = 0.0
+fog_depth_end = 14.5
 fog_height_min = 1.1
 fog_height_max = -0.5
 
-[sub_resource type="PhysicsMaterial" id=4]
-friction = 0.0
+[sub_resource type="SphereShape" id=1]
 
-[sub_resource type="Curve" id=5]
-min_value = 1.0
-max_value = 2.0
-_data = [ Vector2( 0, 2 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CapsuleShape" id=6]
-radius = 0.26
-height = 0.4
-
-[sub_resource type="CapsuleMesh" id=7]
-radius = 0.35
-mid_height = 0.5
-
-[sub_resource type="CylinderMesh" id=8]
-top_radius = 0.26
-bottom_radius = 0.001
-height = 0.245
-radial_segments = 8
-rings = 1
-
-[sub_resource type="ConvexPolygonShape" id=9]
-points = PoolVector3Array( 0, 0.1225, 0.26, 0.183848, 0.1225, 0.183848, 0.26, 0.1225, 1.59204e-17, 0.183848, 0.1225, -0.183848, 3.18408e-17, 0.1225, -0.26, -0.183848, 0.1225, -0.183848, -0.26, 0.1225, -4.77612e-17, -0.183848, 0.1225, 0.183848, -6.36816e-17, 0.1225, 0.26, 0, 0, 0.1305, 0.0922774, 0, 0.0922774, 0.1305, 0, 7.99082e-18, 0.0922774, 0, -0.0922774, 1.59816e-17, 0, -0.1305, -0.0922774, 0, -0.0922774, -0.1305, 0, -2.39725e-17, -0.0922774, 0, 0.0922774, -3.19633e-17, 0, 0.1305, 0, -0.1225, 0.000999987, 0.000707098, -0.1225, 0.000707098, 0.000999987, -0.1225, 6.12316e-20, 0.000707098, -0.1225, -0.000707098, 1.22463e-19, -0.1225, -0.000999987, -0.000707098, -0.1225, -0.000707098, -0.000999987, -0.1225, -1.83695e-19, -0.000707098, -0.1225, 0.000707098, -2.44926e-19, -0.1225, 0.000999987, 0, 0.1225, 0, 0, 0.1225, 0.26, 0.183848, 0.1225, 0.183848, 0.26, 0.1225, 1.59204e-17, 0.183848, 0.1225, -0.183848, 3.18408e-17, 0.1225, -0.26, -0.183848, 0.1225, -0.183848, -0.26, 0.1225, -4.77612e-17, -0.183848, 0.1225, 0.183848, -6.36816e-17, 0.1225, 0.26, 0, -0.1225, 0, 0, -0.1225, 0.001, 0.000707107, -0.1225, 0.000707107, 0.001, -0.1225, 6.12323e-20, 0.000707107, -0.1225, -0.000707107, 1.22465e-19, -0.1225, -0.001, -0.000707107, -0.1225, -0.000707107, -0.001, -0.1225, -1.83697e-19, -0.000707107, -0.1225, 0.000707107, -2.44929e-19, -0.1225, 0.001 )
-
-[sub_resource type="SphereShape" id=10]
-
-[sub_resource type="SphereMesh" id=11]
+[sub_resource type="SphereMesh" id=2]
 radius = 1.06
 height = 2.12
 radial_segments = 6
@@ -75,12 +51,13 @@ script = ExtResource( 1 )
 dungeon_tiles = ExtResource( 4 )
 tile_size = 2
 tile_templates = {
-Resource( "res://tiles/terrain/water/water_tile.tres" ): ExtResource( 6 ),
-Resource( "res://tiles/terrain/sand/sand_tile.tres" ): ExtResource( 5 ),
 Resource( "res://tiles/terrain/dirt/dirt_tile.tres" ): ExtResource( 3 ),
-Resource( "res://tiles/terrain/wall/wall_tile.tres" ): ExtResource( 2 ),
-Resource( "res://tiles/terrain/bridge/bridge_tile.tres" ): ExtResource( 8 )
+Resource( "res://tiles/terrain/sand/sand_tile.tres" ): ExtResource( 5 ),
+Resource( "res://tiles/terrain/bridge/bridge_tile.tres" ): ExtResource( 8 ),
+Resource( "res://tiles/terrain/water/water_tile.tres" ): ExtResource( 6 ),
+Resource( "res://tiles/terrain/wall/wall_tile.tres" ): ExtResource( 2 )
 }
+materials = [ ExtResource( 10 ) ]
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.628737, 0.645546, -0.433544, 0, 0.557528, 0.830158, 0.777618, -0.521951, 0.350538, -32.601, 33.525, 28.3 )
@@ -88,89 +65,39 @@ current = true
 fov = 83.6
 far = 200.0
 
-[node name="Spatial" type="Spatial" parent="."]
+[node name="EnvironmentContainer" type="Spatial" parent="."]
 
-[node name="DirectionalLight" type="DirectionalLight" parent="Spatial"]
-transform = Transform( -1, -3.82137e-15, -8.74228e-08, -8.74228e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 0, 8.60601, 0 )
-light_energy = 0.53
+[node name="DirectionalLight" type="DirectionalLight" parent="EnvironmentContainer"]
+transform = Transform( -1, -3.9081e-15, -8.9407e-08, -8.9407e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 0, 8.60601, 0 )
+light_color = Color( 0.352941, 0.352941, 0.372549, 1 )
+light_energy = 0.93
 
-[node name="MeshInstance" type="MeshInstance" parent="Spatial"]
-transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.623371, 0 )
-mesh = SubResource( 2 )
+[node name="MeshInstance" type="MeshInstance" parent="EnvironmentContainer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.623371, 0 )
+mesh = SubResource( 4 )
 material/0 = null
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Spatial"]
-environment = SubResource( 3 )
+[node name="WorldEnvironment" type="WorldEnvironment" parent="EnvironmentContainer"]
+environment = SubResource( 5 )
 
-[node name="Player" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -11.2558, 1.22847, 19 )
-mode = 2
-mass = 10.0
-physics_material_override = SubResource( 4 )
-gravity_scale = 2.0
-script = ExtResource( 7 )
-ride_height = 1.3
-ride_spring_strength = 800.0
-max_speed = 4.0
-acceleration = 8.0
-acceleration_factor_from_dot = SubResource( 5 )
+[node name="Player" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 1.40998, 3, 2 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Player"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 9.53674e-07 )
-shape = SubResource( 6 )
+[node name="OmniLight" type="OmniLight" parent="Player"]
+light_color = Color( 0.937255, 0.698039, 0.698039, 1 )
+omni_range = 4.1
 
-[node name="Yaw" type="Spatial" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0.146646, 0 )
-
-[node name="Pitch" type="Spatial" parent="Player/Yaw"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.76837e-07, 0 )
-
-[node name="Camera" type="Camera" parent="Player/Yaw/Pitch"]
-transform = Transform( -1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, 0, 0, 0 )
-current = true
-
-[node name="Camera2" type="Camera" parent="Player/Yaw"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -9.53674e-07, -0.561592, -2 )
-
-[node name="RayCast" type="RayCast" parent="Player"]
-enabled = true
-cast_to = Vector3( 0, -1.5, 0 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Player"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-visible = false
-mesh = SubResource( 7 )
-material/0 = null
-
-[node name="MeshInstance2" type="MeshInstance" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.442034, 0 )
-visible = false
-mesh = SubResource( 8 )
-material/0 = null
-
-[node name="CollisionShape2" type="CollisionShape" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.442034, 0 )
-shape = SubResource( 9 )
-
-[node name="ui" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="fps" type="Label" parent="ui"]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="ui" parent="." instance=ExtResource( 9 )]
 
 [node name="Ball" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 19 )
 mass = 1000.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Ball"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Ball"]
-mesh = SubResource( 11 )
+mesh = SubResource( 2 )
 material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="."]

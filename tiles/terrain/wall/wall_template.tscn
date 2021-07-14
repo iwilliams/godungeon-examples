@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tiles/terrain/wall/wall_template.gd" type="Script" id=1]
 [ext_resource path="res://tiles/terrain/wall/wall.mesh" type="ArrayMesh" id=2]
 [ext_resource path="res://tiles/terrain/wall/outter_top.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://tiles/terrain/sand/sand_tile.tres" type="Resource" id=4]
 [ext_resource path="res://tiles/terrain/wall/outter_corner.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://tiles/terrain/wall/wall_material.tres" type="Material" id=6]
 
 [sub_resource type="BoxShape" id=1]
+
+[sub_resource type="PlaneMesh" id=2]
+material = ExtResource( 6 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 1 )
@@ -28,3 +32,8 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
+
+[node name="ceiling" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+mesh = SubResource( 2 )
+material/0 = null

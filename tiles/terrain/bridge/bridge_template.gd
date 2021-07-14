@@ -42,9 +42,15 @@ func get_collision(am: AdjacencyMap) -> Array:
 
 
 func get_meshes(am: AdjacencyMap) -> Array:
-    var meshes = [
-        [$bridge.mesh, $bridge.transform],
-    ]
+    var meshes = []
+    
+    if \
+        (am.side_is_exactly(AdjacencyMap.SIDE_E, bridge_tile) or am.side_is_exactly(AdjacencyMap.SIDE_W, bridge_tile)) \
+        and \
+        (am.side_is_not(AdjacencyMap.SIDE_N, bridge_tile) and am.side_is_not(AdjacencyMap.SIDE_S, bridge_tile)):
+        meshes.push_back([$bridge.mesh, $bridge.transform.rotated(Vector3.UP, deg2rad(90))])
+    else:
+        meshes.push_back([$bridge.mesh, $bridge.transform])
     
     for mesh in $water_template.get_meshes(am):
         meshes.push_back(mesh)

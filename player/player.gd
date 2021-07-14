@@ -29,11 +29,14 @@ func _process(delta):
     if Input.get_action_strength("look_down") > 0:
         $Yaw/Pitch.rotation_degrees.x = clamp($Yaw/Pitch.rotation_degrees.x - (look_x * delta), -90, 90)
 
-func _integrate_forces(state):
+func _integrate_forces(state: PhysicsDirectBodyState):
     var delta = state.step
     
-    var hit = $RayCast.get_collider()
-    if hit != null:
+    var collision = state.get_space_state().intersect_ray(global_transform.origin, global_transform.origin + Vector3(0, -1.5, 0), [self], collision_mask)
+
+#    var hit = $RayCast.get_collider()
+#    if hit != null:
+    if not collision.empty():
         var velocity = linear_velocity
         var ray_dir = Vector3.DOWN
         
@@ -43,8 +46,8 @@ func _integrate_forces(state):
         var other_dir_velcoity = ray_dir.dot(other_velocity)
         
         var rel_velocity = ray_dir_velocity - other_dir_velcoity
-        var ride_hit_distance = $RayCast.global_transform.origin.distance_to($RayCast.get_collision_point()) - ride_height
-        
+#        var ride_hit_distance = $RayCast.global_transform.origin.distance_to($RayCast.get_collision_point()) - ride_height
+        var ride_hit_distance = $RayCast.global_transform.origin.distance_to(collision.position) - ride_height
         var x = ride_hit_distance
         var spring_force = (x * ride_spring_strength) - (rel_velocity * ride_spring_damper)
         add_central_force(Vector3.DOWN * spring_force)

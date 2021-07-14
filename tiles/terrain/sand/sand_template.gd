@@ -135,7 +135,7 @@ func get_meshes(am: AdjacencyMap) -> Array:
         ]
 
     if is_water_or_bridge(am.W):
-        var t = $edge.transform.rotated(Vector3(0, 1, 0), deg2rad(-90))
+        var t = $edge.transform.rotated(Vector3(0, 1, 0), deg2rad(-90))       
         return [
             [$edge.mesh, t],
             [$water.mesh, $water.transform]

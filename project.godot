@@ -1161,4 +1161,5 @@ look_up={
 
 [rendering]
 
+quality/shading/force_vertex_shading=true
 environment/default_environment="res://default_env.tres"

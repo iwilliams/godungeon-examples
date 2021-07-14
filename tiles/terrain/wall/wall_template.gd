@@ -45,4 +45,6 @@ func get_meshes(am: AdjacencyMap) -> Array:
         meshes.push_back([$outter_top.mesh, $outter_top.transform.rotated(Vector3(0, 1, 0), deg2rad(-90))])
         return meshes
         
+    meshes.push_back([$ceiling.mesh, $ceiling.transform])
+        
     return meshes

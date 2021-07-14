@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://addons/godungeon/GodungeonTiles3D.gd" type="Script" id=1]
 [ext_resource path="res://procedural/procedural_terrain_tiles.tres" type="Resource" id=2]
@@ -7,11 +7,17 @@
 [ext_resource path="res://tiles/terrain/wall/wall_template.tscn" type="PackedScene" id=5]
 [ext_resource path="res://tiles/terrain/sand/sand_template.tscn" type="PackedScene" id=6]
 [ext_resource path="res://tiles/terrain/water/water_template.tscn" type="PackedScene" id=7]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/ui.tscn" type="PackedScene" id=9]
+[ext_resource path="res://tiles/terrain/bridge/bridge_template.tscn" type="PackedScene" id=10]
+[ext_resource path="res://tiles/terrain/sand/sand_material.tres" type="Material" id=11]
+[ext_resource path="res://EnvironmentContainer.tscn" type="PackedScene" id=12]
 
 [node name="Spatial" type="Spatial"]
 
 [node name="DungeonGenerator" type="Node" parent="."]
 script = ExtResource( 3 )
+editor_generate = true
 terrain_tiles = ExtResource( 2 )
 
 [node name="GodungeonTiles3D" type="Spatial" parent="."]
@@ -22,5 +28,14 @@ tile_templates = {
 Resource( "res://tiles/terrain/water/water_tile.tres" ): ExtResource( 7 ),
 Resource( "res://tiles/terrain/sand/sand_tile.tres" ): ExtResource( 6 ),
 Resource( "res://tiles/terrain/dirt/dirt_tile.tres" ): ExtResource( 4 ),
-Resource( "res://tiles/terrain/wall/wall_tile.tres" ): ExtResource( 5 )
+Resource( "res://tiles/terrain/wall/wall_tile.tres" ): ExtResource( 5 ),
+Resource( "res://tiles/terrain/bridge/bridge_tile.tres" ): ExtResource( 10 )
 }
+materials = [ ExtResource( 11 ) ]
+
+[node name="Player" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 30.6852, 1.22847, -10.9011 )
+
+[node name="ui" parent="." instance=ExtResource( 9 )]
+
+[node name="EnvironmentContainer" parent="." instance=ExtResource( 12 )]
