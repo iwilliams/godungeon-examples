@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://player/PlayerSettings.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=8]
+min_value = 1.0
+max_value = 2.0
+_data = [ Vector2( 0, 2 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[resource]
+script = ExtResource( 1 )
+ride_height = 1.3
+crouch_ride_height = 0.8
+ride_spring_strength = 800.0
+ride_spring_damper = 100.0
+max_speed = 4.0
+crouch_max_speed = 1.75
+acceleration = 8.0
+max_acceleration_force = 150.0
+acceleration_factor_from_dot = SubResource( 8 )
+mouse_sensitivity = 0.25
+invert_mouse = false
