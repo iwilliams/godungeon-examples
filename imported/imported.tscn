@@ -11,11 +11,11 @@
 [ext_resource path="res://ui/ui.tscn" type="PackedScene" id=9]
 [ext_resource path="res://tiles/terrain/sand/sand_material.tres" type="Material" id=10]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="SphereMesh" id=4]
-material = SubResource( 3 )
+[sub_resource type="SphereMesh" id=2]
+material = SubResource( 1 )
 flip_faces = true
 radius = 100.0
 height = 100.0
@@ -23,7 +23,7 @@ radial_segments = 10
 rings = 5
 is_hemisphere = true
 
-[sub_resource type="Environment" id=5]
+[sub_resource type="Environment" id=3]
 background_mode = 1
 background_color = Color( 0.0392157, 0.0823529, 0.0941176, 1 )
 ambient_light_color = Color( 1, 1, 1, 1 )
@@ -36,9 +36,9 @@ fog_depth_end = 14.5
 fog_height_min = 1.1
 fog_height_max = -0.5
 
-[sub_resource type="SphereShape" id=1]
+[sub_resource type="SphereShape" id=4]
 
-[sub_resource type="SphereMesh" id=2]
+[sub_resource type="SphereMesh" id=5]
 radius = 1.06
 height = 2.12
 radial_segments = 6
@@ -51,10 +51,10 @@ script = ExtResource( 1 )
 dungeon_tiles = ExtResource( 4 )
 tile_size = 2
 tile_templates = {
-Resource( "res://tiles/terrain/dirt/dirt_tile.tres" ): ExtResource( 3 ),
-Resource( "res://tiles/terrain/sand/sand_tile.tres" ): ExtResource( 5 ),
 Resource( "res://tiles/terrain/bridge/bridge_tile.tres" ): ExtResource( 8 ),
 Resource( "res://tiles/terrain/water/water_tile.tres" ): ExtResource( 6 ),
+Resource( "res://tiles/terrain/sand/sand_tile.tres" ): ExtResource( 5 ),
+Resource( "res://tiles/terrain/dirt/dirt_tile.tres" ): ExtResource( 3 ),
 Resource( "res://tiles/terrain/wall/wall_tile.tres" ): ExtResource( 2 )
 }
 materials = [ ExtResource( 10 ) ]
@@ -74,11 +74,11 @@ light_energy = 0.93
 
 [node name="MeshInstance" type="MeshInstance" parent="EnvironmentContainer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.623371, 0 )
-mesh = SubResource( 4 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="EnvironmentContainer"]
-environment = SubResource( 5 )
+environment = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 1.40998, 3, 2 )
@@ -94,10 +94,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 19 )
 mass = 1000.0
 
 [node name="CollisionShape" type="CollisionShape" parent="Ball"]
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Ball"]
-mesh = SubResource( 2 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="."]
