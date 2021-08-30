@@ -91,7 +91,7 @@ omni_range = 4.1
 
 [node name="Ball" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 19 )
-mass = 1000.0
+mass = 359.76
 
 [node name="CollisionShape" type="CollisionShape" parent="Ball"]
 shape = SubResource( 4 )
@@ -99,5 +99,3 @@ shape = SubResource( 4 )
 [node name="MeshInstance" type="MeshInstance" parent="Ball"]
 mesh = SubResource( 5 )
 material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="."]
