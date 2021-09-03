@@ -31,7 +31,7 @@ _global_script_classes=[ {
 }, {
 "base": "Resource",
 "class": "PlayerSettings",
-"language": "GDScript",
+"language": "",
 "path": "res://player/PlayerSettings.gd"
 } ]
 _global_script_class_icons={
@@ -1201,5 +1201,4 @@ sprint={
 
 [rendering]
 
-quality/shading/force_vertex_shading=true
 environment/default_environment="res://default_env.tres"

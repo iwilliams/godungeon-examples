@@ -4,7 +4,7 @@
 
 [sub_resource type="Shader" id=1]
 code = "shader_type spatial;
-render_mode vertex_lighting;
+//render_mode vertex_lighting;
 uniform sampler2D albedo : hint_albedo;
 uniform sampler2D tiles : hint_albedo;
 uniform vec2 tiles_offset;

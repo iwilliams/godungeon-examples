@@ -1,11 +1,9 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://player/PlayerSettings.gd" type="Script" id=1]
-
-[sub_resource type="Curve" id=1]
-min_value = 1.0
-max_value = 10.0
-_data = [ Vector2( 0, 5.61043 ), 0.0, -0.109063, 0, 0, Vector2( 1, 1 ), -6.31336, 0.0, 0, 0 ]
+[ext_resource path="res://player/DefaultAccelerationFromDotCurve.tres" type="Curve" id=2]
+[ext_resource path="res://player/DefaultBobCurve.tres" type="Curve" id=3]
+[ext_resource path="res://player/DefaultViewBoxCurve.tres" type="Curve" id=4]
 
 [resource]
 script = ExtResource( 1 )
@@ -13,16 +11,25 @@ ride_height = 1.3
 crouch_ride_height = 0.8
 ride_spring_strength = 800.0
 ride_spring_damper = 100.0
-max_speed = 4.0
-max_speed_sprint = 6.0
+max_speed = 3.0
+max_speed_sprint = 5.0
 max_speed_crouch = 1.75
 acceleration = 8.0
 acceleration_air = 0.2
 acceleration_sprint = 10.0
 max_acceleration_force = 10.0
-acceleration_factor_from_dot = SubResource( 1 )
+acceleration_factor_from_dot = ExtResource( 2 )
 fall_stun_height = 0.75
 fall_stun_length = 0.25
 mouse_sensitivity = 0.25
 invert_mouse = false
+stick_sensitivity = 100.0
 head_bob_enabled = true
+max_bob_height = 0.1
+bob_curve = ExtResource( 3 )
+head_tilt_enabled = true
+mouse_look_mode = 1
+view_box = Vector2( 100, 100 )
+view_box_dead_zone = Vector2( 0.8, 0.8 )
+view_box_sensitivity = 1.2
+view_box_curve = ExtResource( 4 )
